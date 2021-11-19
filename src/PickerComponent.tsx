@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button, Platform, View, Text } from "react-native";
+import { Button, Platform, View, Text, StyleSheet } from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
-
 
 export const TimeViewer = (props: any) => {
 
@@ -21,9 +20,9 @@ export const TimeViewer = (props: any) => {
 
     return (
         <View>
-            <View>
-                <Text>Current Time Picked: {time.toLocaleTimeString()}</Text>
-                <Button onPress={showTimePicker} title="Pick Time" />
+            <View style={styles.viewer}>
+                <Text style={{ fontSize: '1.2rem' }}>Time: {time.toLocaleTimeString()}</Text>
+                <Button onPress={showTimePicker} title="Pick" />
             </View>
             <View>
                 {show && (<DateTimePicker
@@ -55,9 +54,9 @@ export const DateViewer = (props: any) => {
 
     return (
         <View>
-            <View>
-                <Text>Current Date Picked: {date.toLocaleDateString()}</Text>
-                <Button onPress={showDatePicker} title="Pick Date" />
+            <View style={styles.viewer}>
+                <Text style={{ fontSize: '1.2rem' }}>Date: {date.toLocaleDateString()}</Text>
+                <Button onPress={showDatePicker} title={"Pick"} />
             </View>
             <View>
                 {show && (<DateTimePicker
@@ -70,3 +69,14 @@ export const DateViewer = (props: any) => {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    viewer: {
+        display: 'flex',
+        flexDirection: 'row',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: "space-around"
+    },
+
+})
